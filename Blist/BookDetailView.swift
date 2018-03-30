@@ -80,14 +80,12 @@ class BookDetailView: UIView {
         button.cornerRadius = 20.0
         button.backgroundColor = UIColor.hex(hexStr: "F19E39", alpha: 1.0)
         button.setTitle("Amazonで購入", for: .normal)
-
 //        button.setImage(UIImage(named: "AmazonBuy-1"), for: .normal)
         return button
     }()
     
     lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView(frame: .zero)
-        stackView.spacing = 15
         stackView.distribution = .fillEqually
         stackView.addArrangedSubview(buyRakutenButton)
         stackView.addArrangedSubview(buyAmazonButton)
@@ -171,6 +169,7 @@ class BookDetailView: UIView {
         buttonStackView.widthAnchor.constraint(equalToConstant: frame.width - 50).isActive = true
         buttonStackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         buttonStackView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        buttonStackView.spacing = 15
         
         explanationArea.translatesAutoresizingMaskIntoConstraints = false
         explanationArea.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 20).isActive = true
