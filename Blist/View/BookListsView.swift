@@ -7,7 +7,7 @@ class BookListsView: UIView {
     
     var tableView: UITableView!
     
-    lazy var barcodeReaderButton: UIButton = {
+    lazy var barcodeReaderButton: UIButtonX = {
         let button = UIButtonX()
         button.isRound = true
         button.backgroundColor = UIColor.hex(hexStr: "#52ACFF", alpha: 1.0)

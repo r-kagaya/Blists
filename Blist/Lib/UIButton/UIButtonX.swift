@@ -29,10 +29,12 @@ class UIButtonX: UIButton {
             cornerRadius = self.frame.width / 2
         }
         layer.cornerRadius = cornerRadius
-        clipsToBounds = true
-        
+
         layer.borderColor = borderColor.cgColor
         layer.borderWidth = borderWidth
+        
+        clipsToBounds = true
+//        layer.masksToBounds = false
     }
  
 }

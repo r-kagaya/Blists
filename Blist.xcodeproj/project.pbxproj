@@ -54,6 +54,7 @@
 		E3E5BC69206DF7A50067F507 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E5BC68206DF7A50067F507 /* BookDetailViewController.swift */; };
 		E3E5BC6B206DF7AC0067F507 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E5BC6A206DF7AC0067F507 /* BookDetailView.swift */; };
 		E3E5BC6D206DF7B60067F507 /* BookDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E5BC6C206DF7B60067F507 /* BookDetailModel.swift */; };
+		E3E5BC6F206E4F7F0067F507 /* Border+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E5BC6E206E4F7F0067F507 /* Border+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,7 @@
 		E3E5BC68206DF7A50067F507 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		E3E5BC6A206DF7AC0067F507 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
 		E3E5BC6C206DF7B60067F507 /* BookDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailModel.swift; sourceTree = "<group>"; };
+		E3E5BC6E206E4F7F0067F507 /* Border+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Border+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +299,7 @@
 				E385BDB3206C8023000A57D8 /* UIView+.swift */,
 				E385BDAD206C8023000A57D8 /* UserDefaults+.swift */,
 				E385BDB1206C8023000A57D8 /* enum+.swift */,
+				E3E5BC6E206E4F7F0067F507 /* Border+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -778,6 +781,7 @@
 				E3E5BC61206DD1DF0067F507 /* BookListsModel.swift in Sources */,
 				E385BDD6206C8023000A57D8 /* GradiateView.swift in Sources */,
 				E385BDC7206C8023000A57D8 /* PushableButton.swift in Sources */,
+				E3E5BC6F206E4F7F0067F507 /* Border+.swift in Sources */,
 				E385BDD5206C8023000A57D8 /* Gradation.swift in Sources */,
 				E3E5BC58206DD12E0067F507 /* Utility.swift in Sources */,
 				E385BDE3206C8136000A57D8 /* QRReaderModel.swift in Sources */,
