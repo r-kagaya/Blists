@@ -15,6 +15,8 @@ class BookListsViewController: UIViewController {
         let listsView = self.view as! BookListsView
         listsView.tableView.delegate = self
         listsView.tableView.dataSource = model
+        
+        navigationItem.title = "Book List"
     }
     
 }
@@ -25,7 +27,7 @@ extension BookListsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedItem = model.bookLists[indexPath.row]
         let vc = BookDetailViewController(data: selectedItem)
-        present(vc, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

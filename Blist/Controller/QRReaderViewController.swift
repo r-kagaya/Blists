@@ -18,9 +18,8 @@ class QRReaderViewController: UIViewController {
     }
 
     @objc private func showList() {
-        let vc = BookListsViewController()
+        let vc = UINavigationController(rootViewController: BookListsViewController())
         present(vc, animated: true, completion: nil)
-        
     }
 
 }

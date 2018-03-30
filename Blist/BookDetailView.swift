@@ -117,7 +117,7 @@ class BookDetailView: UIView {
     
     private func activateConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 30).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 80).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         titleLabel.widthAnchor.constraint(equalToConstant: frame.width / 2).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true

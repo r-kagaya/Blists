@@ -135,10 +135,10 @@ class QRReaderView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     
     private func activateConstraints() {
         listButton.translatesAutoresizingMaskIntoConstraints = false
-        listButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -40).isActive = true
-        listButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -30).isActive = true
-        listButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        listButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        listButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -60).isActive = true
+        listButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -25).isActive = true
+        listButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        listButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }
     
 }
