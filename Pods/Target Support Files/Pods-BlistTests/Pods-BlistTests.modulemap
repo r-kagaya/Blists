@@ -1,0 +1,6 @@
+framework module Pods_BlistTests {
+  umbrella header "Pods-BlistTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

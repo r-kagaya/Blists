@@ -1,0 +1,6 @@
+framework module Pods_Blist {
+  umbrella header "Pods-Blist-umbrella.h"
+
+  export *
+  module * { export * }
+}
