@@ -219,9 +219,6 @@
 				E385BDDB206C803E000A57D8 /* Splash */,
 				E385BDDD206C8108000A57D8 /* View */,
 				E385BD7F206C7FE4000A57D8 /* Info.plist */,
-				E3E5BC68206DF7A50067F507 /* BookDetailViewController.swift */,
-				E3E5BC6A206DF7AC0067F507 /* BookDetailView.swift */,
-				E3E5BC6C206DF7B60067F507 /* BookDetailModel.swift */,
 			);
 			path = Blist;
 			sourceTree = "<group>";
@@ -376,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				E3E5BC5C206DD1C80067F507 /* BookListsViewController.swift */,
+				E3E5BC68206DF7A50067F507 /* BookDetailViewController.swift */,
 				E385BD75206C7FE4000A57D8 /* QRReaderViewController.swift */,
 			);
 			path = Controller;
@@ -386,6 +384,7 @@
 			children = (
 				E3E5BC62206DD5910067F507 /* Cell */,
 				E3E5BC5E206DD1D40067F507 /* BookListsView.swift */,
+				E3E5BC6A206DF7AC0067F507 /* BookDetailView.swift */,
 				E385BDE0206C812C000A57D8 /* QRReaderView.swift */,
 			);
 			path = View;
@@ -422,6 +421,7 @@
 		E3E5BC59206DD1550067F507 /* Structur */ = {
 			isa = PBXGroup;
 			children = (
+				E3E5BC6C206DF7B60067F507 /* BookDetailModel.swift */,
 				E3E5BC5A206DD1760067F507 /* BookModel.swift */,
 			);
 			path = Structur;

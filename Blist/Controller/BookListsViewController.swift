@@ -6,6 +6,10 @@ import UIKit
 class BookListsViewController: UIViewController {
     
     private let model = BookListsModel()
+//    private lazy var backBarcodeReaderButton: UIBarButtonItem = {
+//        let button = UIBarButtonItem(image: UIImage(named: "ic_clear"), style: .done, target: self, action: #selector(backBarcodeReader))
+//        return button
+//    }()
     
     override func loadView() {
         self.view = BookListsView()
@@ -15,8 +19,14 @@ class BookListsViewController: UIViewController {
         let listsView = self.view as! BookListsView
         listsView.tableView.delegate = self
         listsView.tableView.dataSource = model
+        listsView.barcodeReaderButton.addTarget(self, action: #selector(backBarcodeReader), for: .touchUpInside)
         
         navigationItem.title = "Book List"
+//        navigationItem.leftBarButtonItem = backBarcodeReaderButton
+    }
+    
+    @objc private func backBarcodeReader() {
+        dismiss(animated: true, completion: nil)
     }
     
 }

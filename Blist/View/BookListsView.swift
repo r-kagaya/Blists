@@ -7,12 +7,21 @@ class BookListsView: UIView {
     
     var tableView: UITableView!
     
+    lazy var barcodeReaderButton: UIButton = {
+        let button = UIButtonX()
+        button.isRound = true
+        button.backgroundColor = UIColor.hex(hexStr: "#52ACFF", alpha: 1.0)
+        button.setImage(UIImage(named: "photo_camera_36pt"), for: .normal)
+        return button
+    }()
+    
     required init() {
         tableView = UITableView(frame: .zero, style: .plain)
         super.init(frame: .zero)
         backgroundColor = .white
         setupTableView()
         addSubview(tableView)
+        addSubview(barcodeReaderButton)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -40,6 +49,12 @@ class BookListsView: UIView {
         
         tableView.estimatedRowHeight = frame.height / 10
         tableView.rowHeight = frame.height / 10
+        
+        barcodeReaderButton.translatesAutoresizingMaskIntoConstraints = false
+        barcodeReaderButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -60).isActive = true
+        barcodeReaderButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -25).isActive = true
+        barcodeReaderButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        barcodeReaderButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }
 
 }
