@@ -28,6 +28,7 @@ class QRReaderViewController: UIViewController {
 extension QRReaderViewController: barcodeReaderDelegate {
     func didDetection(isbn: String) {
         guard let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=isbn:\(isbn)&Country=JP") else { return }
+        print(url)
         Alamofire.request(url)
             .responseJSON { response in
 //                defer {

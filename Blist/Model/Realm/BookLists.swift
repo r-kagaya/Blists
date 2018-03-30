@@ -45,12 +45,12 @@ class BookLists: Object {
         model.explanation = books.description
         model.publishedDate = books.publishedDate
         model.pageCount = books.pageCount
-        model.imageLink = books.imageLink.absoluteString
+        model.imageLink = books.imageLink
         model.authors = books.authors
         model.textSnipets = books.textSnipets
-        model.identifier = books.identifier
+        model.ISBN_13 = books.ISBN_13
+        model.ISBN_10 = books.ISBN_10
         model.createdAt = Utility.getNowClockString()
-
         try! BookLists.realm.write {
             BookLists.realm.add(model)
         }
@@ -72,7 +72,8 @@ class BookLists: Object {
     @objc dynamic var explanation = String()
     @objc dynamic var publishedDate = String()
     @objc dynamic var textSnipets = String()
-    @objc dynamic var identifier = String()
+    @objc dynamic var ISBN_13 = String()
+    @objc dynamic var ISBN_10 = String()
     @objc dynamic var createdAt = String()
     @objc dynamic var pageCount = Int()
     @objc dynamic var imageLink = String()
