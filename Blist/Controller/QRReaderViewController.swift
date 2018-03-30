@@ -5,6 +5,7 @@ import SwiftyJSON
 
 class QRReaderViewController: UIViewController {
 
+    private var qrReaderView: QRReaderView!
     override func loadView() {
         self.view = QRReaderView()
     }
@@ -12,14 +13,32 @@ class QRReaderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let qrReaderView = self.view as! QRReaderView
+        qrReaderView = self.view as! QRReaderView
         qrReaderView.listButton.addTarget(self, action: #selector(showList), for: .touchUpInside)
         qrReaderView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        qrReaderView.listButton.alpha = 0.0
+        qrReaderView.listButton.transform = CGAffineTransform(translationX: 100, y: 100)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        qrReaderView.listButton.alpha = 1.0
+        UIView.animate(withDuration: 0.3) {
+            self.qrReaderView.listButton.transform = .identity
+        }
     }
 
     @objc private func showList() {
         let vc = UINavigationController(rootViewController: BookListsViewController())
-        present(vc, animated: true, completion: nil)
+        vc.modalTransitionStyle = .flipHorizontal
+        UIView.animate(withDuration: 0.2, animations: {
+            self.qrReaderView.listButton.transform = CGAffineTransform(translationX: 100, y: 100)
+            self.qrReaderView.listButton.alpha = 0.0
+        }) { _ in
+            self.present(vc, animated: true)
+        }
     }
 
 }

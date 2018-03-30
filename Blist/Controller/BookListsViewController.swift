@@ -5,6 +5,7 @@ import UIKit
 
 class BookListsViewController: UIViewController {
     
+    private var listsView: BookListsView!
     private let model = BookListsModel()
 //    private lazy var backBarcodeReaderButton: UIBarButtonItem = {
 //        let button = UIBarButtonItem(image: UIImage(named: "ic_clear"), style: .done, target: self, action: #selector(backBarcodeReader))
@@ -16,7 +17,7 @@ class BookListsViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        let listsView = self.view as! BookListsView
+        listsView = self.view as! BookListsView
         listsView.tableView.delegate = self
         listsView.tableView.dataSource = model
         listsView.barcodeReaderButton.addTarget(self, action: #selector(backBarcodeReader), for: .touchUpInside)
@@ -25,8 +26,25 @@ class BookListsViewController: UIViewController {
 //        navigationItem.leftBarButtonItem = backBarcodeReaderButton
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        listsView.barcodeReaderButton.alpha = 0.0
+        listsView.barcodeReaderButton.transform = CGAffineTransform(translationX: 100, y: 100)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        listsView.barcodeReaderButton.alpha = 1.0
+        UIView.animate(withDuration: 0.3) {
+            self.listsView.barcodeReaderButton.transform = .identity
+        }
+    }
+    
     @objc private func backBarcodeReader() {
-        dismiss(animated: true, completion: nil)
+        UIView.animate(withDuration: 0.2, animations: {
+            self.listsView.barcodeReaderButton.transform = CGAffineTransform(translationX: 100, y: 100)
+            self.listsView.barcodeReaderButton.alpha = 0.0
+        }) { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
 }
