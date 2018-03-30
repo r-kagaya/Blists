@@ -20,7 +20,7 @@ class QRReaderViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         qrReaderView.listButton.alpha = 0.0
-        qrReaderView.listButton.transform = CGAffineTransform(translationX: 100, y: 100)
+        qrReaderView.listButton.transform = CGAffineTransform(translationX: 100, y: 65)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -33,8 +33,8 @@ class QRReaderViewController: UIViewController {
     @objc private func showList() {
         let vc = UINavigationController(rootViewController: BookListsViewController())
         vc.modalTransitionStyle = .flipHorizontal
-        UIView.animate(withDuration: 0.2, animations: {
-            self.qrReaderView.listButton.transform = CGAffineTransform(translationX: 100, y: 100)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.qrReaderView.listButton.transform = CGAffineTransform(translationX: 100, y: 65)
             self.qrReaderView.listButton.alpha = 0.0
         }) { _ in
             self.present(vc, animated: true)

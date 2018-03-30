@@ -28,7 +28,7 @@ class BookListsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         listsView.barcodeReaderButton.alpha = 0.0
-        listsView.barcodeReaderButton.transform = CGAffineTransform(translationX: 100, y: 100)
+        listsView.barcodeReaderButton.transform = CGAffineTransform(translationX: 100, y: 65)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -39,8 +39,8 @@ class BookListsViewController: UIViewController {
     }
     
     @objc private func backBarcodeReader() {
-        UIView.animate(withDuration: 0.2, animations: {
-            self.listsView.barcodeReaderButton.transform = CGAffineTransform(translationX: 100, y: 100)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.listsView.barcodeReaderButton.transform = CGAffineTransform(translationX: 100, y: 65)
             self.listsView.barcodeReaderButton.alpha = 0.0
         }) { _ in
             self.dismiss(animated: true, completion: nil)
