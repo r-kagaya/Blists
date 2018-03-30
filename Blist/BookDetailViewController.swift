@@ -34,8 +34,7 @@ class BookDetailViewController: UIViewController {
     @objc private func openAmazonApp() {
         Alert(title: "Amazonで開きます", message: "AmazonのAppに遷移します")
             .addAction(title: "OK", style: .default) { (action) in
-                let view = self.view as! QRReaderView
-                view.start()
+
             }
             .open()
     }
@@ -43,8 +42,7 @@ class BookDetailViewController: UIViewController {
     @objc private func openRakutenApp() {
         Alert(title: "楽天で開きます", message: "楽天のAppに遷移します")
             .addAction(title: "OK", style: .default) { (action) in
-                let view = self.view as! QRReaderView
-                view.start()
+    
             }
             .open()
     }
