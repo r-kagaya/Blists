@@ -65,21 +65,30 @@ class BookDetailView: UIView {
     
     lazy var buyRakutenButton: UIButton = {
         let button = UIButtonX(frame: .zero)
-        button.backgroundColor = .red
-        button.setTitle("楽天で購入する", for: .normal)
+        button.borderColor = .black
+        button.borderWidth = 0.2
+        button.cornerRadius = 20.0
+        button.backgroundColor = UIColor.hex(hexStr: "DC2C17", alpha: 1.0)
+        button.setTitle("楽天で購入", for: .normal)
         return button
     }()
     
     lazy var buyAmazonButton: UIButton = {
         let button = UIButtonX(frame: .zero)
-        button.backgroundColor = .yellow
-        button.setTitle("Amazonで購入する", for: .normal)
+        button.borderColor = .black
+        button.borderWidth = 0.3
+        button.cornerRadius = 20.0
+        button.backgroundColor = UIColor.hex(hexStr: "F19E39", alpha: 1.0)
+        button.setTitle("Amazonで購入", for: .normal)
+
+//        button.setImage(UIImage(named: "AmazonBuy-1"), for: .normal)
         return button
     }()
     
     lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView(frame: .zero)
-        stackView.spacing = 30
+        stackView.spacing = 15
+        stackView.distribution = .fillEqually
         stackView.addArrangedSubview(buyRakutenButton)
         stackView.addArrangedSubview(buyAmazonButton)
         return stackView

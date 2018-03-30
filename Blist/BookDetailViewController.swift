@@ -34,12 +34,13 @@ class BookDetailViewController: UIViewController {
         Alert(title: "Amazonで開きます", message: "AmazonのAppに遷移します")
             .addAction(title: "OK", style: .default) { (action) in
                 let url = URL(string: "http://www.amazon.co.jp/dp/\(self.model.book.ISBN_10)")!
-                let appScheme = URL(string: "com.amazon.mobile.shopping://")!
-                if UIApplication.shared.canOpenURL(appScheme) {
-                    UIApplication.shared.open(appScheme)
-                } else {
+//                let appScheme = URL(string: "com.amazon.mobile.shopping://")!
+                if UIApplication.shared.canOpenURL(url) {
                     UIApplication.shared.open(url)
                 }
+//                else {
+//                    UIApplication.shared.open(url)
+//                }
             }
             .open()
     }
@@ -48,12 +49,13 @@ class BookDetailViewController: UIViewController {
         Alert(title: "楽天で開きます", message: "楽天のAppに遷移します")
             .addAction(title: "OK", style: .default) { (action) in
                 let url = URL(string: "https://books.rakuten.co.jp/search/dt?g=001&bisbn=\(self.model.book.ISBN_10)")!
-                let appScheme = URL(string: "Rakuten://")!
-                if UIApplication.shared.canOpenURL(appScheme) {
-                    UIApplication.shared.open(appScheme)
-                } else {
+//                let appScheme = URL(string: "Rakuten://")!
+                if UIApplication.shared.canOpenURL(url) {
                     UIApplication.shared.open(url)
                 }
+                // else {
+                 //   UIApplication.shared.open(url)
+//                }
             }
             .open()
     }
