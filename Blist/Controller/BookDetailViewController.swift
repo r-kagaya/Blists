@@ -2,6 +2,8 @@
 
 import Foundation
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class BookDetailViewController: UIViewController {
     
@@ -20,14 +22,30 @@ class BookDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         let detailView = self.view as! BookDetailView
-        detailView.titleLabel.text = model.book.title
-        detailView.subtitleLabel.text = model.book.subTitle
-        detailView.authorLabel.text = model.book.authors[0]
-        detailView.publishedDateLabel.text = model.book.publishedDate
-        detailView.pageCountLabel.text = String(model.book.pageCount)
-        detailView.explanationArea.text = model.book.explanation
-        detailView.buyRakutenButton.addTarget(self, action: #selector(openRakutenApp), for: .touchUpInside)
-        detailView.buyAmazonButton.addTarget(self, action: #selector(openAmazonApp), for: .touchUpInside)
+//        detailView.titleLabel.text = model.book.title
+//        detailView.subtitleLabel.text = model.book.subTitle
+//        detailView.authorLabel.text = model.book.authors[0]
+//        detailView.publishedDateLabel.text = model.book.publishedDate
+//        detailView.pageCountLabel.text = String(model.book.pageCount)
+//        detailView.explanationArea.text = model.book.explanation
+//        detailView.buyRakutenButton.addTarget(self, action: #selector(openRakutenApp), for: .touchUpInside)
+//        detailView.buyAmazonButton.addTarget(self, action: #selector(openAmazonApp), for: .touchUpInside)
+        detailView.imageCardView.image = UIImage(named: "AmazonBuy-1")!
+        
+        
+        guard let url = URL(string: model.book.imageLink) else { return }
+        print(url)
+        Alamofire.request(url)
+            .responseData { response in
+                switch response.result {
+                case .success(let responseValue):
+                    print(responseValue)
+                    detailView.imageCardView.image = UIImage(data: responseValue, scale: 1.0)
+//                    let json = JSON(responseValue)
+                case .failure(let error):
+                    print(error)
+                }
+        }
     }
     
     @objc private func openAmazonApp() {

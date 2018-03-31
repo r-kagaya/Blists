@@ -4,6 +4,18 @@ import UIKit
 
 class BookDetailView: UIView {
     
+    lazy var imageCardView: UIImageView = {
+        let imageView = UIImageView(frame: .zero)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    lazy var contentsCardView: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .lightGray
+        return view
+    }()
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
@@ -89,24 +101,58 @@ class BookDetailView: UIView {
     required init() {
         super.init(frame: .zero)
         backgroundColor = .white
-        addSubview(titleLabel)
-        addSubview(subtitleLabel)
-        addSubview(authorPlaceholder)
-        addSubview(authorLabel)
-        addSubview(publishedDatePlaceholder)
-        addSubview(publishedDateLabel)
-        addSubview(pageCountPlaceholder)
-        addSubview(pageCountLabel)
-        addSubview(explanationArea)
-        addSubview(buttonStackView)
+//        addSubview(titleLabel)
+//        addSubview(subtitleLabel)
+//        addSubview(authorPlaceholder)
+//        addSubview(authorLabel)
+//        addSubview(publishedDatePlaceholder)
+//        addSubview(publishedDateLabel)
+//        addSubview(pageCountPlaceholder)
+//        addSubview(pageCountLabel)
+//        addSubview(explanationArea)
+//        addSubview(buttonStackView)
+        addSubview(imageCardView)
+        addSubview(contentsCardView)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func layoutSubviews() {
-        activateConstraints()
+//        activateConstraints()
+        setupButtonDesgin()
+        setupImageCardView()
+        setupContentsCardView()
+    }
+    
+    private func setupButtonDesgin() {
+        buyRakutenButton.addShadow(.lightGray, opacity: 1.0, radius: 2.0, CGSize(width: 3, height: 3))
+        buyRakutenButton.layer.cornerRadius = 20.0
+        buyRakutenButton.addBorder()
+        //        buyRakutenButton.layer.masksToBounds = false //角丸ではみ出した背景を切り取る
+        
+        buyAmazonButton.addShadow(.lightGray, opacity: 1.0, radius: 2.0, CGSize(width: 3, height: 3))
+        buyAmazonButton.addBorder()
+        buyAmazonButton.layer.cornerRadius = 20.0
+        //        buyAmazonButton.layer.masksToBounds = false //角丸ではみ出した背景を切り取る
+    }
+    
+    private func setupContentsCardView() {
+        contentsCardView.translatesAutoresizingMaskIntoConstraints = false
+        contentsCardView.topAnchor.constraint(equalTo: topAnchor, constant: 80).isActive = true
+        contentsCardView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        contentsCardView.widthAnchor.constraint(equalToConstant: frame.width - 50).isActive = true
+        contentsCardView.heightAnchor.constraint(equalToConstant: frame.height / 1.5)
+        contentsCardView.layer.cornerRadius = 10.0
+    }
+    
+    private func setupImageCardView() {
+        imageCardView.translatesAutoresizingMaskIntoConstraints = false
+        imageCardView.topAnchor.constraint(equalTo: topAnchor, constant: 80).isActive = true
+        imageCardView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        imageCardView.widthAnchor.constraint(equalToConstant: frame.width / 2).isActive = true
+        imageCardView.heightAnchor.constraint(equalToConstant: frame.height / 4)
+        imageCardView.layer.cornerRadius = 10.0
     }
     
     private func activateConstraints() {
@@ -170,20 +216,7 @@ class BookDetailView: UIView {
         explanationArea.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         explanationArea.widthAnchor.constraint(equalToConstant: frame.width - 30).isActive = true
         explanationArea.bottomAnchor.constraint(equalTo: buttonStackView.topAnchor, constant: -30).isActive = true
-
-        setupButtonDesgin()
     }
-    
-    private func setupButtonDesgin() {
-        buyRakutenButton.addShadow(.lightGray, opacity: 1.0, radius: 2.0, CGSize(width: 3, height: 3))
-        buyRakutenButton.layer.cornerRadius = 20.0
-        buyRakutenButton.addBorder()
-//        buyRakutenButton.layer.masksToBounds = false //角丸ではみ出した背景を切り取る
-        
-        buyAmazonButton.addShadow(.lightGray, opacity: 1.0, radius: 2.0, CGSize(width: 3, height: 3))
-        buyAmazonButton.addBorder()
-        buyAmazonButton.layer.cornerRadius = 20.0
-//        buyAmazonButton.layer.masksToBounds = false //角丸ではみ出した背景を切り取る
-    }
+  
     
 }
