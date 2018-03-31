@@ -14,7 +14,7 @@ class QRReaderView: UIView, AVCaptureMetadataOutputObjectsDelegate {
         let button = UIButtonX()
         button.isRound = true
         button.backgroundColor = UIColor.hex(hexStr: "#52ACFF", alpha: 1.0)
-        button.setImage(UIImage(named: "shop_36pt"), for: .normal)
+        button.setImage(UIImage(named: "list_48pt"), for: .normal)
         return button
     }()
     

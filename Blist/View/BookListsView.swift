@@ -11,7 +11,7 @@ class BookListsView: UIView {
         let button = UIButtonX()
         button.isRound = true
         button.backgroundColor = UIColor.hex(hexStr: "#52ACFF", alpha: 1.0)
-        button.setImage(UIImage(named: "photo_camera_36pt"), for: .normal)
+        button.setImage(UIImage(named: "photo_camera_48pt"), for: .normal)
         return button
     }()
     
