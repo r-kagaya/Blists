@@ -6,7 +6,6 @@ target 'Blist' do
   use_frameworks!
 
   # Pods for Blist 
-  pod 'CryptoSwift'
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'RealmSwift'
