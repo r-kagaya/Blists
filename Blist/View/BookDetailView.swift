@@ -31,7 +31,7 @@ class BookDetailView: UIView {
         buttonStackView.widthAnchor.constraint(equalToConstant: frame.width - 50).isActive = true
         buttonStackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         buttonStackView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        buttonStackView.spacing = 15
+//        buttonStackView.spacing = 15
         
         contentsCardView.translatesAutoresizingMaskIntoConstraints = false
 //        contentsCardView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true

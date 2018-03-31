@@ -9,6 +9,10 @@ class BuyButtons: UIStackView {
         addArrangedSubview(BuyRakutenButton(frame: .zero))
         addArrangedSubview(BuyAmazonButton(frame: .zero))
     }
+    
+    override func layoutSubviews() {
+        spacing = 15
+    }
 
 }
 
