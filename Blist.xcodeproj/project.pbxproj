@@ -12,6 +12,9 @@
 		C2193A400D67B43AEF058657 /* Pods_BlistUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11DFE8AD253E14AD63B19B10 /* Pods_BlistUITests.framework */; };
 		E3519050206FBE95000925B4 /* BookDetailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351904F206FBE95000925B4 /* BookDetailCardView.swift */; };
 		E3519053206FBEAC000925B4 /* BookDetailCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3519052206FBEAC000925B4 /* BookDetailCardView.xib */; };
+		E3519057206FD49E000925B4 /* BookDetailCardDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3519056206FD49E000925B4 /* BookDetailCardDialog.swift */; };
+		E3519059206FD4A3000925B4 /* BookDetailCardDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3519058206FD4A3000925B4 /* BookDetailCardDialog.xib */; };
+		E351905D206FD559000925B4 /* BuyButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351905C206FD559000925B4 /* BuyButtons.swift */; };
 		E385BD74206C7FE4000A57D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E385BD73206C7FE4000A57D8 /* AppDelegate.swift */; };
 		E385BD76206C7FE4000A57D8 /* QRReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E385BD75206C7FE4000A57D8 /* QRReaderViewController.swift */; };
 		E385BD7B206C7FE4000A57D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E385BD7A206C7FE4000A57D8 /* Assets.xcassets */; };
@@ -88,6 +91,9 @@
 		C0878380D1D7AE54B725F177 /* Pods-BlistUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlistUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlistUITests/Pods-BlistUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E351904F206FBE95000925B4 /* BookDetailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailCardView.swift; sourceTree = "<group>"; };
 		E3519052206FBEAC000925B4 /* BookDetailCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookDetailCardView.xib; sourceTree = "<group>"; };
+		E3519056206FD49E000925B4 /* BookDetailCardDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailCardDialog.swift; sourceTree = "<group>"; };
+		E3519058206FD4A3000925B4 /* BookDetailCardDialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookDetailCardDialog.xib; sourceTree = "<group>"; };
+		E351905C206FD559000925B4 /* BuyButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyButtons.swift; sourceTree = "<group>"; };
 		E385BD70206C7FE4000A57D8 /* Blist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E385BD73206C7FE4000A57D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E385BD75206C7FE4000A57D8 /* QRReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRReaderViewController.swift; sourceTree = "<group>"; };
@@ -195,10 +201,44 @@
 		E3519051206FBEA0000925B4 /* Parts */ = {
 			isa = PBXGroup;
 			children = (
+				E351905B206FD545000925B4 /* BuyButtons */,
+				E351905A206FD538000925B4 /* BookDetailCardView */,
+			);
+			path = Parts;
+			sourceTree = "<group>";
+		};
+		E3519054206FD47B000925B4 /* Dialog */ = {
+			isa = PBXGroup;
+			children = (
+				E3519055206FD485000925B4 /* BookDetailCardDialog */,
+			);
+			path = Dialog;
+			sourceTree = "<group>";
+		};
+		E3519055206FD485000925B4 /* BookDetailCardDialog */ = {
+			isa = PBXGroup;
+			children = (
+				E3519056206FD49E000925B4 /* BookDetailCardDialog.swift */,
+				E3519058206FD4A3000925B4 /* BookDetailCardDialog.xib */,
+			);
+			path = BookDetailCardDialog;
+			sourceTree = "<group>";
+		};
+		E351905A206FD538000925B4 /* BookDetailCardView */ = {
+			isa = PBXGroup;
+			children = (
 				E351904F206FBE95000925B4 /* BookDetailCardView.swift */,
 				E3519052206FBEAC000925B4 /* BookDetailCardView.xib */,
 			);
-			path = Parts;
+			path = BookDetailCardView;
+			sourceTree = "<group>";
+		};
+		E351905B206FD545000925B4 /* BuyButtons */ = {
+			isa = PBXGroup;
+			children = (
+				E351905C206FD559000925B4 /* BuyButtons.swift */,
+			);
+			path = BuyButtons;
 			sourceTree = "<group>";
 		};
 		E385BD67206C7FE4000A57D8 = {
@@ -398,6 +438,7 @@
 		E385BDDD206C8108000A57D8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E3519054206FD47B000925B4 /* Dialog */,
 				E3519051206FBEA0000925B4 /* Parts */,
 				E3E5BC62206DD5910067F507 /* Cell */,
 				E3E5BC5E206DD1D40067F507 /* BookListsView.swift */,
@@ -578,6 +619,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E385BD7E206C7FE4000A57D8 /* LaunchScreen.storyboard in Resources */,
+				E3519059206FD4A3000925B4 /* BookDetailCardDialog.xib in Resources */,
 				E385BD7B206C7FE4000A57D8 /* Assets.xcassets in Resources */,
 				E3519053206FBEAC000925B4 /* BookDetailCardView.xib in Resources */,
 				E3E5BC67206DD5BE0067F507 /* BookListsTableViewCell.xib in Resources */,
@@ -774,6 +816,7 @@
 				E3E5BC66206DD5BE0067F507 /* BookListsTableViewCell.swift in Sources */,
 				E385BDC4206C8023000A57D8 /* FAPaginationLayout.swift in Sources */,
 				E385BDD8206C8023000A57D8 /* Routing.swift in Sources */,
+				E3519057206FD49E000925B4 /* BookDetailCardDialog.swift in Sources */,
 				E3E5BC69206DF7A50067F507 /* BookDetailViewController.swift in Sources */,
 				E385BDD4206C8023000A57D8 /* ExpandingSquareView.swift in Sources */,
 				E385BDC9206C8023000A57D8 /* UserDefaults+.swift in Sources */,
@@ -795,6 +838,7 @@
 				E3E5BC61206DD1DF0067F507 /* BookListsModel.swift in Sources */,
 				E385BDD6206C8023000A57D8 /* GradiateView.swift in Sources */,
 				E385BDC7206C8023000A57D8 /* PushableButton.swift in Sources */,
+				E351905D206FD559000925B4 /* BuyButtons.swift in Sources */,
 				E3E5BC6F206E4F7F0067F507 /* Border+.swift in Sources */,
 				E385BDD5206C8023000A57D8 /* Gradation.swift in Sources */,
 				E3E5BC58206DD12E0067F507 /* Utility.swift in Sources */,
