@@ -11,7 +11,6 @@ class BookDetailCardView: UIView {
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var bookImageView: UIImageView!
     
-
     /** イニシャライザー */
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,10 +19,9 @@ class BookDetailCardView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
         self.loadFromNib()
     }
-    
+
     /** Nibファイル読み込み */
     private func loadFromNib() {
         

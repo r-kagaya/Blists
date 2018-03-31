@@ -34,6 +34,6 @@ struct Book {
         textSnipets = json["items"][0]["searchInfo"]["textSnippet"].string ?? ""
         ISBN_13 = json["items"][0]["volumeInfo"]["industryIdentifiers"][1]["identifier"].string ?? ""
         ISBN_10 = json["items"][0]["volumeInfo"]["industryIdentifiers"][0]["identifier"].string ?? ""
-        
     }
+    
 }
