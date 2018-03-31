@@ -29,6 +29,9 @@ class BookDetailViewController: UIViewController {
         detailView.contentsCardView.pageCountLabel.text = String(model.book.pageCount)
         detailView.contentsCardView.authorLabel.text = model.book.authors[0]
         detailView.contentsCardView.descTextView.text = model.book.explanation
+
+        detailView.buyRakutenButton.addTarget(self, action: #selector(openRakutenApp), for: .touchUpInside)
+        detailView.buyAmazonButton.addTarget(self, action: #selector(openAmazonApp), for: .touchUpInside)
         
         guard let url = URL(string: model.book.imageLink) else { return }
         print(url)

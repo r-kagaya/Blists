@@ -3,20 +3,16 @@ import Foundation
 import UIKit
 
 class BuyButtons: UIStackView {
-
     override func awakeFromNib() {
         distribution = .fillEqually
-        addArrangedSubview(BuyRakutenButton(frame: .zero))
-        addArrangedSubview(BuyAmazonButton(frame: .zero))
     }
-    
     override func layoutSubviews() {
         spacing = 15
     }
-
 }
 
 class BuyRakutenButton: UIButton {
+    
     override func awakeFromNib() {
         backgroundColor = UIColor.hex(hexStr: "DC2C17", alpha: 1.0)
         setTitle("楽天で購入", for: .normal)
@@ -25,6 +21,7 @@ class BuyRakutenButton: UIButton {
         layer.cornerRadius = 20.0
         addBorder()
     }
+    
 }
 
 class BuyAmazonButton: UIButton {
