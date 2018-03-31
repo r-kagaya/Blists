@@ -20,7 +20,7 @@ class BookListsModel: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookListsCell", for: indexPath) as! BookListsTableViewCell
         let listItem = bookLists[indexPath.row]
-        cell.titleLabel.text = listItem.title
+        cell.titleLabel.text = listItem.title + "~" + listItem.subTitle + "~"
         cell.backgroundColor = .white
         cell.selectionStyle = .none
         return cell
