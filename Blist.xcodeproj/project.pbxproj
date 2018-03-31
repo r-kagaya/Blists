@@ -10,6 +10,8 @@
 		5F40100FA979899BCC4A4311 /* Pods_BlistTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 269E656472CE2A7441193E82 /* Pods_BlistTests.framework */; };
 		A5BCCC4FF8D332ABC50BD55E /* Pods_Blist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B5C24585813BEF929366F5F /* Pods_Blist.framework */; };
 		C2193A400D67B43AEF058657 /* Pods_BlistUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11DFE8AD253E14AD63B19B10 /* Pods_BlistUITests.framework */; };
+		E3519050206FBE95000925B4 /* BookDetailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351904F206FBE95000925B4 /* BookDetailCardView.swift */; };
+		E3519053206FBEAC000925B4 /* BookDetailCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3519052206FBEAC000925B4 /* BookDetailCardView.xib */; };
 		E385BD74206C7FE4000A57D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E385BD73206C7FE4000A57D8 /* AppDelegate.swift */; };
 		E385BD76206C7FE4000A57D8 /* QRReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E385BD75206C7FE4000A57D8 /* QRReaderViewController.swift */; };
 		E385BD7B206C7FE4000A57D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E385BD7A206C7FE4000A57D8 /* Assets.xcassets */; };
@@ -84,6 +86,8 @@
 		724EE1A0FF6620EE1190406B /* Pods-Blist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blist.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blist/Pods-Blist.release.xcconfig"; sourceTree = "<group>"; };
 		7B5C24585813BEF929366F5F /* Pods_Blist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0878380D1D7AE54B725F177 /* Pods-BlistUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlistUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlistUITests/Pods-BlistUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E351904F206FBE95000925B4 /* BookDetailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailCardView.swift; sourceTree = "<group>"; };
+		E3519052206FBEAC000925B4 /* BookDetailCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookDetailCardView.xib; sourceTree = "<group>"; };
 		E385BD70206C7FE4000A57D8 /* Blist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E385BD73206C7FE4000A57D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E385BD75206C7FE4000A57D8 /* QRReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRReaderViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +190,15 @@
 				C0878380D1D7AE54B725F177 /* Pods-BlistUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E3519051206FBEA0000925B4 /* Parts */ = {
+			isa = PBXGroup;
+			children = (
+				E351904F206FBE95000925B4 /* BookDetailCardView.swift */,
+				E3519052206FBEAC000925B4 /* BookDetailCardView.xib */,
+			);
+			path = Parts;
 			sourceTree = "<group>";
 		};
 		E385BD67206C7FE4000A57D8 = {
@@ -385,6 +398,7 @@
 		E385BDDD206C8108000A57D8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E3519051206FBEA0000925B4 /* Parts */,
 				E3E5BC62206DD5910067F507 /* Cell */,
 				E3E5BC5E206DD1D40067F507 /* BookListsView.swift */,
 				E3E5BC6A206DF7AC0067F507 /* BookDetailView.swift */,
@@ -565,6 +579,7 @@
 			files = (
 				E385BD7E206C7FE4000A57D8 /* LaunchScreen.storyboard in Resources */,
 				E385BD7B206C7FE4000A57D8 /* Assets.xcassets in Resources */,
+				E3519053206FBEAC000925B4 /* BookDetailCardView.xib in Resources */,
 				E3E5BC67206DD5BE0067F507 /* BookListsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -755,6 +770,7 @@
 				E385BDD7206C8023000A57D8 /* Gradiate.swift in Sources */,
 				E385BDC6206C8023000A57D8 /* CircleButton.swift in Sources */,
 				E3E5BC5B206DD1760067F507 /* BookModel.swift in Sources */,
+				E3519050206FBE95000925B4 /* BookDetailCardView.swift in Sources */,
 				E3E5BC66206DD5BE0067F507 /* BookListsTableViewCell.swift in Sources */,
 				E385BDC4206C8023000A57D8 /* FAPaginationLayout.swift in Sources */,
 				E385BDD8206C8023000A57D8 /* Routing.swift in Sources */,
