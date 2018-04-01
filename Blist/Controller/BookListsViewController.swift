@@ -32,18 +32,28 @@ class BookListsViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        listsView.barcodeReaderButton.alpha = 1.0
-        UIView.animate(withDuration: 0.3) {
-            self.listsView.barcodeReaderButton.transform = .identity
-        }
+        toggleBarcodeButton(shouldPresent: true)
     }
     
     @objc private func backBarcodeReader() {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.listsView.barcodeReaderButton.transform = CGAffineTransform(translationX: 100, y: 100)
-            self.listsView.barcodeReaderButton.alpha = 0.0
-        }) { _ in
-            self.dismiss(animated: true, completion: nil)
+        toggleBarcodeButton(shouldPresent: false, dismiss: true)
+    }
+    
+    private func toggleBarcodeButton(shouldPresent: Bool, dismiss: Bool = false) {
+        if shouldPresent {
+            listsView.barcodeReaderButton.alpha = 1.0
+            UIView.animate(withDuration: 0.3) {
+                self.listsView.barcodeReaderButton.transform = .identity
+            }
+        } else {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.listsView.barcodeReaderButton.transform = CGAffineTransform(translationX: 100, y: 100)
+                self.listsView.barcodeReaderButton.alpha = 0.0
+            }) { _ in
+                if dismiss {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
         }
     }
     
@@ -57,5 +67,25 @@ extension BookListsViewController: UITableViewDelegate {
         let vc = BookDetailViewController(data: selectedItem)
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.toggleBarcodeButton(shouldPresent: false)
+//        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.toggleBarcodeButton(shouldPresent: true)
+        }
+    }
+    
+//    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+//        toggleBarcodeButton(shouldPresent: false)
+//    }
+//
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        toggleBarcodeButton(shouldPresent: true)
+//    }
     
 }
