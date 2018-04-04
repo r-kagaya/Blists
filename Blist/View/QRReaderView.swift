@@ -10,13 +10,23 @@ protocol barcodeReaderDelegate: class {
 
 class QRReaderView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     
+    // 検出エリアのビュー
+    private let x: CGFloat = 0.15
+    private let y: CGFloat = 0.3
+    private let width: CGFloat = 0.7
+    private let height: CGFloat = 0.2
+    private let screenWidth = UIScreen.main.bounds.width
+    private let screenHeight = UIScreen.main.bounds.height
+
     lazy var listButton: UIButton = {
         let button = UIButtonX()
         button.isRound = true
-        button.backgroundColor = UIColor.hex(hexStr: "#52ACFF", alpha: 1.0)
+        button.backgroundColor = AppColor.appColor
         button.setImage(UIImage(named: "list_48pt"), for: .normal)
         return button
     }()
+    
+    private let detectionArea = UIView()
     
     // ビデオ表示のためにCALayerのサブクラスを定義
     var videoLayer: AVCaptureVideoPreviewLayer?
@@ -53,6 +63,21 @@ class QRReaderView: UIView, AVCaptureMetadataOutputObjectsDelegate {
                         self.session.addOutput(metadataOutput)
                         metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
                         metadataOutput.metadataObjectTypes = [.ean13]
+
+                        // 解析範囲を表すボーダービューを作成する
+                        detectionArea.frame = CGRect(x: x * screenWidth, y: y * screenHeight, width: width * screenWidth, height: height * screenHeight)
+                        detectionArea.layer.borderWidth = 2
+                        detectionArea.layer.borderColor = AppColor.appColor.cgColor
+                        addSubview(detectionArea)
+ 
+                        // 検出エリアの設定
+                        metadataOutput.rectOfInterest = CGRect(
+                            x: y,
+                            y: x,
+                            width: height,
+                            height: width
+                        )
+                        
                         let previewLayer = AVCaptureVideoPreviewLayer(session: self.session)  // 背面カメラの映像を画面に表示するためのレイヤーを生成
                         previewLayer.frame = bounds
                         previewLayer.videoGravity = .resizeAspectFill
@@ -64,16 +89,12 @@ class QRReaderView: UIView, AVCaptureMetadataOutputObjectsDelegate {
                 print("Error occured while creating video device input: \(error)")
             }
         }
+        bringSubview(toFront: detectionArea)
         bringSubview(toFront: listButton)
         start()
     }
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-//        for metadata in metadataObjects as! [AVMetadataMachineReadableCodeObject] {
-//            if metadata.type != .ean13 && metadata.type != .ean8 { continue }  // QRコードのデータかどうかの確認
-//            guard let value = metadata.stringValue else { continue } // QRコードの内容が空かどうかの確認
-//            delegate?.didDetection(isbn: value)
-//        }
         if metadataObjects.count > 0 {
             let metaDataArray = metadataObjects as! [AVMetadataMachineReadableCodeObject]
             let metadata = metaDataArray[0]
@@ -82,7 +103,6 @@ class QRReaderView: UIView, AVCaptureMetadataOutputObjectsDelegate {
             delegate?.didDetection(isbn: value)
             stop()
         }
-
     }
     
     override func layoutSubviews() {

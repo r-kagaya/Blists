@@ -10,6 +10,7 @@
 		5F40100FA979899BCC4A4311 /* Pods_BlistTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 269E656472CE2A7441193E82 /* Pods_BlistTests.framework */; };
 		A5BCCC4FF8D332ABC50BD55E /* Pods_Blist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B5C24585813BEF929366F5F /* Pods_Blist.framework */; };
 		C2193A400D67B43AEF058657 /* Pods_BlistUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11DFE8AD253E14AD63B19B10 /* Pods_BlistUITests.framework */; };
+		E303F21B2074EA7900B8B5B7 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E303F21A2074EA7900B8B5B7 /* AppColor.swift */; };
 		E3519050206FBE95000925B4 /* BookDetailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351904F206FBE95000925B4 /* BookDetailCardView.swift */; };
 		E3519053206FBEAC000925B4 /* BookDetailCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3519052206FBEAC000925B4 /* BookDetailCardView.xib */; };
 		E351905D206FD559000925B4 /* BuyButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351905C206FD559000925B4 /* BuyButtons.swift */; };
@@ -88,6 +89,7 @@
 		724EE1A0FF6620EE1190406B /* Pods-Blist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blist.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blist/Pods-Blist.release.xcconfig"; sourceTree = "<group>"; };
 		7B5C24585813BEF929366F5F /* Pods_Blist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0878380D1D7AE54B725F177 /* Pods-BlistUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlistUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlistUITests/Pods-BlistUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E303F21A2074EA7900B8B5B7 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		E351904F206FBE95000925B4 /* BookDetailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailCardView.swift; sourceTree = "<group>"; };
 		E3519052206FBEAC000925B4 /* BookDetailCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookDetailCardView.xib; sourceTree = "<group>"; };
 		E351905C206FD559000925B4 /* BuyButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyButtons.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				E385BD73206C7FE4000A57D8 /* AppDelegate.swift */,
+				E303F21A2074EA7900B8B5B7 /* AppColor.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -800,6 +803,7 @@
 				E385BDD7206C8023000A57D8 /* Gradiate.swift in Sources */,
 				E385BDC6206C8023000A57D8 /* CircleButton.swift in Sources */,
 				E3E5BC5B206DD1760067F507 /* BookModel.swift in Sources */,
+				E303F21B2074EA7900B8B5B7 /* AppColor.swift in Sources */,
 				E351905F206FDC05000925B4 /* DialogProtocol.swift in Sources */,
 				E3519050206FBE95000925B4 /* BookDetailCardView.swift in Sources */,
 				E3E5BC66206DD5BE0067F507 /* BookListsTableViewCell.swift in Sources */,
