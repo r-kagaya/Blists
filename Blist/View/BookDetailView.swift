@@ -8,7 +8,21 @@ class BookDetailView: UIView {
         let card = BookDetailCardView(frame: .zero)
         return card
     }()
-
+    
+//    @IBOutlet weak var subtitleLabel: UILabel!
+//    @IBOutlet weak var publishedDate: UILabel!
+//    @IBOutlet weak var authorLabel: UILabel!
+//    @IBOutlet weak var pageCountLabel: UILabel!
+//    @IBOutlet weak var descTextView: UITextView!
+//    @IBOutlet weak var bookImageView: UIImageView!
+    
+    lazy var titleLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        return label
+    }()
+    
+    
+    
     lazy var buyRakutenButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.backgroundColor = UIColor.hex(hexStr: "DC2C17", alpha: 1.0)
@@ -34,7 +48,7 @@ class BookDetailView: UIView {
     required init() {
         super.init(frame: .zero)
         backgroundColor = .white
-        addSubview(contentsCardView)
+        addSubview(titleLabel)
         addSubview(buttonStackView)
     }
     required init?(coder aDecoder: NSCoder) {
@@ -59,21 +73,19 @@ class BookDetailView: UIView {
     }
     
     private func activateConstraints() {
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 80).isActive = true
+        titleLabel.sizeToFit()
+        
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
         buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30).isActive = true
         buttonStackView.widthAnchor.constraint(equalToConstant: frame.width - 50).isActive = true
         buttonStackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         buttonStackView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         buttonStackView.spacing = 15
-        
-        contentsCardView.translatesAutoresizingMaskIntoConstraints = false
-//        contentsCardView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        contentsCardView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        contentsCardView.topAnchor.constraint(equalTo: topAnchor, constant: 80).isActive = true
-        contentsCardView.bottomAnchor.constraint(equalTo: buttonStackView.topAnchor, constant: -30).isActive = true
-        contentsCardView.widthAnchor.constraint(equalToConstant: frame.width - 30).isActive = true
-//        contentsCardView.heightAnchor.constraint(equalToConstant: frame.height / 1.5)
-        contentsCardView.layer.cornerRadius = 10.0
+
     }
   
     
