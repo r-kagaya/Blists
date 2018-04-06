@@ -63,14 +63,14 @@ class BookDetailView: UIView {
     }()
 
     lazy var buyRakutenButton: UIButton = {
-        let button = UIButtonX(frame: .zero)
+        let button = UIButton(frame: .zero)
         button.backgroundColor = UIColor.hex(hexStr: "DC2C17", alpha: 1.0)
         button.setTitle("楽天で購入", for: .normal)
         return button
     }()
     
     lazy var buyAmazonButton: UIButton = {
-        let button = UIButtonX(frame: .zero)
+        let button = UIButton(frame: .zero)
         button.backgroundColor = UIColor.hex(hexStr: "F19E39", alpha: 1.0)
         button.setTitle("Amazonで購入", for: .normal)
         return button
