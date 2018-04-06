@@ -8,7 +8,7 @@ class BookDetailView: UIView {
         let card = BookDetailCardView(frame: .zero)
         return card
     }()
-    
+
 //    @IBOutlet weak var subtitleLabel: UILabel!
 //    @IBOutlet weak var publishedDate: UILabel!
 //    @IBOutlet weak var authorLabel: UILabel!
@@ -21,8 +21,21 @@ class BookDetailView: UIView {
         return label
     }()
     
+    lazy var subtitleLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        return label
+    }()
     
+    lazy var descTextView: UITextView = {
+        let textView = UITextView(frame: .zero)
+        return textView
+    }()
     
+    lazy var bookImageView: UIImageView = {
+        let imageView = UIImageView(frame: .zero)
+        return imageView
+    }()
+
     lazy var buyRakutenButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.backgroundColor = UIColor.hex(hexStr: "DC2C17", alpha: 1.0)
@@ -48,7 +61,10 @@ class BookDetailView: UIView {
     required init() {
         super.init(frame: .zero)
         backgroundColor = .white
+        addSubview(bookImageView)
         addSubview(titleLabel)
+        addSubview(subtitleLabel)
+        addSubview(descTextView)
         addSubview(buttonStackView)
     }
     required init?(coder aDecoder: NSCoder) {
@@ -73,11 +89,27 @@ class BookDetailView: UIView {
     }
     
     private func activateConstraints() {
-        
+
+        bookImageView.translatesAutoresizingMaskIntoConstraints = false
+        bookImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        bookImageView.topAnchor.constraint(equalTo: topAnchor, constant: 100).isActive = true
+        bookImageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        bookImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 80).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: 30).isActive = true
         titleLabel.sizeToFit()
+        
+        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        subtitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
+        subtitleLabel.sizeToFit()
+        
+        descTextView.translatesAutoresizingMaskIntoConstraints = false
+        descTextView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        descTextView.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 30).isActive = true
+        descTextView.sizeToFit()
         
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
         buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30).isActive = true
