@@ -21,15 +21,14 @@ class BookDetailViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        
         let detailView = self.view as! BookDetailView
 
         detailView.titleLabel.text = model.book.title
         detailView.subtitleLabel.text = model.book.subTitle
-//        detailView.contentsCardView.publishedDate.text = model.book.publishedDate
-//        detailView.contentsCardView.pageCountLabel.text = String(model.book.pageCount)
-//        detailView.contentsCardView.authorLabel.text = model.book.authors[0]
         detailView.descTextView.text = model.book.explanation
-
         detailView.buyRakutenButton.addTarget(self, action: #selector(openRakutenApp), for: .touchUpInside)
         detailView.buyAmazonButton.addTarget(self, action: #selector(openAmazonApp), for: .touchUpInside)
         
@@ -40,6 +39,7 @@ class BookDetailViewController: UIViewController {
                 switch response.result {
                 case .success(let responseValue):
                     detailView.bookImageView.image = UIImage(data: responseValue, scale: 1.0)
+
                 case .failure(let error):
                     print(error)
                 }
