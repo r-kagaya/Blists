@@ -23,7 +23,7 @@ class BookDetailViewController: UIViewController {
     override func viewDidLoad() {
         
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        
+
         let detailView = self.view as! BookDetailView
 
         detailView.titleLabel.text = model.book.title
@@ -33,7 +33,6 @@ class BookDetailViewController: UIViewController {
         detailView.buyAmazonButton.addTarget(self, action: #selector(openAmazonApp), for: .touchUpInside)
         
         guard let url = URL(string: model.book.imageLink) else { return }
-        print(url)
         Alamofire.request(url)
             .responseData { response in
                 switch response.result {
@@ -46,8 +45,27 @@ class BookDetailViewController: UIViewController {
         }
     }
     
+    private func convertToISBN10(ISBN13 isbn13: String) -> String {
+        
+        var _isbn10 = isbn13[isbn13.index(isbn13.startIndex, offsetBy: 3)..<isbn13.index(isbn13.startIndex, offsetBy: isbn13.count - 1)]
+        
+        var degitCount = 10
+        var _isbn13AllSum: Int = 0
+        _isbn10.forEach { num in
+            let code = Int(String(num))! * degitCount
+            _isbn13AllSum = _isbn13AllSum + code
+            degitCount = degitCount - 1
+        }
+        var _isbn13checkDegit = 11 - (_isbn13AllSum % 11)
+        if _isbn13checkDegit == 11 {
+            _isbn13checkDegit = 0
+        }
+
+        return String(_isbn10) + String(_isbn13checkDegit)
+    }
+    
     @objc private func openAmazonApp() {
-        let url = URL(string: "http://www.amazon.co.jp/dp/\(self.model.book.ISBN_10)")!
+        let url = URL(string: "http://www.amazon.co.jp/dp/\(self.convertToISBN10(ISBN13: self.model.book.ISBN))")!
     //                let appScheme = URL(string: "com.amazon.mobile.shopping://")!
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
@@ -55,7 +73,7 @@ class BookDetailViewController: UIViewController {
     }
     
     @objc private func openRakutenApp() {
-        let url = URL(string: "https://books.rakuten.co.jp/search/dt?g=001&bisbn=\(self.model.book.ISBN_10)")!
+        let url = URL(string: model.book.itemUrl)!
     //                let appScheme = URL(string: "Rakuten://")!
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)

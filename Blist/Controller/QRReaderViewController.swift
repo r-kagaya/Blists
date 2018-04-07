@@ -54,8 +54,9 @@ class QRReaderViewController: UIViewController {
 
 extension QRReaderViewController: barcodeReaderDelegate {
     func didDetection(isbn: String) {
-        guard let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=isbn:\(isbn)&Country=JP") else { return }
-        print(url)
+//        guard let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=isbn:\(isbn)") else { return }
+        guard let url = URL(string: "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&isbn=\(isbn)&applicationId=1016045182743403697") else { return }
+
         Alamofire.request(url)
             .responseJSON { response in
                 switch response.result {
@@ -69,17 +70,16 @@ extension QRReaderViewController: barcodeReaderDelegate {
                     
                     let json = JSON(responseValue)
                     
-                    guard let kind = json["kind"].string, kind.contains("books#volumes") else {
-                        alertTitle = "バーコードが違います"
-                        return
-                    }
-     
-                    guard let totalItems = json["totalItems"].int, totalItems != 0 else {
-                        print("ijjiojijijo")
+//                    guard let _ = json["count"].string else {
+//                        alertTitle = "バーコードが違います"
+//                        return
+//                    }
+
+                    guard let totalItems = json["count"].int, totalItems != 0 else {
                         alertTitle = "見つかりませんでした"
                         return
                     }
-                    
+
                     let book = Book(json)
                     BookLists.registrerBookList(books: book)
                     alertTitle = "読み込みに成功しました"

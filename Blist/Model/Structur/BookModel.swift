@@ -8,32 +8,29 @@ struct Book {
     let subTitle: String
     let description: String
     let publishedDate: String
-    let pageCount: Int
+    let reviewAverage: String
+    let authors: String
+    let itemUrl: String
+    let ISBN: String
+    let itemPrice: Int
     var imageLink: String
-    var authors = [String]()
-    let textSnipets: String
-    let ISBN_10: String
-    let ISBN_13: String
-    
+
     init(_ json: JSON) {
-        title = json["items"][0]["volumeInfo"]["title"].string ?? ""
-        subTitle = json["items"][0]["volumeInfo"]["subtitle"].string ?? ""
-        description = json["items"][0]["volumeInfo"]["description"].string ?? ""
-        publishedDate = json["items"][0]["volumeInfo"]["publishedDate"].string ?? ""
-        pageCount = json["items"][0]["volumeInfo"]["pageCount"].int ?? 0
-        
+        title = json["Items"][0]["Item"]["title"].string ?? ""
+        subTitle = json["Items"][0]["Item"]["subTitle"].string ?? ""
+        description = json["Items"][0]["Item"]["itemCaption"].string ?? ""
+        publishedDate = json["Items"][0]["Item"]["salesDate"].string ?? ""
+        reviewAverage = json["Items"][0]["Item"]["reviewAverage"].string ?? ""
+        itemUrl = json["Items"][0]["Item"]["itemUrl"].string ?? ""
+        authors = json["Items"][0]["Item"]["author"].string ?? ""
+        itemPrice = json["Items"][0]["Item"]["itemPrice"].int ?? 0
+        ISBN = json["Items"][0]["Item"]["isbn"].string ?? ""
+
         imageLink = ""
-        if let value = json["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"].url {
+        if let value = json["Items"][0]["Item"]["mediumImageUrl"].url {
             imageLink = value.absoluteString
         }
         
-        for (_, value) in json["items"][0]["volumeInfo"]["authors"] {
-            self.authors.append(value.string!)
-        }
-        
-        textSnipets = json["items"][0]["searchInfo"]["textSnippet"].string ?? ""
-        ISBN_13 = json["items"][0]["volumeInfo"]["industryIdentifiers"][1]["identifier"].string ?? ""
-        ISBN_10 = json["items"][0]["volumeInfo"]["industryIdentifiers"][0]["identifier"].string ?? ""
     }
     
 }

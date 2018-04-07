@@ -17,7 +17,21 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLo-82-tKO">
+                                <rect key="frame" x="30" y="308.5" width="315" height="51"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.41009935069999998" green="0.64653807320000001" blue="0.99193829300000003" alpha="0.85126819350000005" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="RLo-82-tKO" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0EI-su-vmJ"/>
+                            <constraint firstItem="RLo-82-tKO" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Gp4-rh-dBI"/>
+                            <constraint firstItem="RLo-82-tKO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="eAh-J7-NK5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RLo-82-tKO" secondAttribute="trailing" constant="30" id="vkD-dL-Eui"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>

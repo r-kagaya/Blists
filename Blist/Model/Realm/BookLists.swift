@@ -11,10 +11,6 @@ enum BookListsModelQuery: String {
     case isOffline = "isOffline"
 }
 
-class Authors: Object {
-    @objc dynamic var authorName = ""
-}
-
 class BookLists: Object {
     
     static let realm = try! Realm()
@@ -44,40 +40,30 @@ class BookLists: Object {
         model.subTitle = books.subTitle
         model.explanation = books.description
         model.publishedDate = books.publishedDate
-        model.pageCount = books.pageCount
+        model.itemPrice = books.itemPrice
         model.imageLink = books.imageLink
         model.authors = books.authors
-        model.textSnipets = books.textSnipets
-        model.ISBN_13 = books.ISBN_13
-        model.ISBN_10 = books.ISBN_10
+        model.ISBN = books.ISBN
+        model.reviewAverage = books.reviewAverage
+        model.itemUrl = books.itemUrl
         model.createdAt = Utility.getNowClockString()
         try! BookLists.realm.write {
             BookLists.realm.add(model)
         }
     }
-    
-    var authors: [String] {
-        get {
-            return _authors.map { $0.authorName }
-        }
-        set {
-            _authors.removeAll()
-            _authors.append(objectsIn: (newValue.map( { Authors(value: [$0]) })))
-        }
-    }
-    
+
     @objc dynamic var id = 1
     @objc dynamic var title = String()
     @objc dynamic var subTitle = String()
     @objc dynamic var explanation = String()
     @objc dynamic var publishedDate = String()
-    @objc dynamic var textSnipets = String()
-    @objc dynamic var ISBN_13 = String()
-    @objc dynamic var ISBN_10 = String()
+    @objc dynamic var ISBN = String()
     @objc dynamic var createdAt = String()
-    @objc dynamic var pageCount = Int()
+    @objc dynamic var itemUrl = String()
+    @objc dynamic var reviewAverage = String()
     @objc dynamic var imageLink = String()
-    private var _authors = List<Authors>()
+    @objc dynamic var authors = String()
+    @objc dynamic var itemPrice = Int()
 
     override static func primaryKey() -> String? {
         return "id"

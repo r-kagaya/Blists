@@ -30,6 +30,7 @@ class BookDetailView: UIView {
         let label = UILabel(frame: .zero)
         label.font = UIFont.italicSystemFont(ofSize: 16)
         label.textAlignment = .left
+        label.numberOfLines = 0
         return label
     }()
     
