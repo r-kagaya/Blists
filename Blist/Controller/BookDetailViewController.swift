@@ -47,7 +47,7 @@ class BookDetailViewController: UIViewController {
     
     private func convertToISBN10(ISBN13 isbn13: String) -> String {
         
-        var _isbn10 = isbn13[isbn13.index(isbn13.startIndex, offsetBy: 3)..<isbn13.index(isbn13.startIndex, offsetBy: isbn13.count - 1)]
+        let _isbn10 = isbn13[isbn13.index(isbn13.startIndex, offsetBy: 3)..<isbn13.index(isbn13.startIndex, offsetBy: isbn13.count - 1)]
         
         var degitCount = 10
         var _isbn13AllSum: Int = 0
