@@ -5,10 +5,7 @@ import RealmSwift
 enum BookListsModelQuery: String {
     case id = "id"
     case createdAt = "createdAt"
-    case tipsNumber = "tipsNumber"
-    case type = "type"
     case title = "title"
-    case isOffline = "isOffline"
 }
 
 class BookLists: Object {
@@ -49,6 +46,13 @@ class BookLists: Object {
         model.createdAt = Utility.getNowClockString()
         try! BookLists.realm.write {
             BookLists.realm.add(model)
+        }
+    }
+    
+    static func deleteBookList(item: BookLists) {
+//        guard let listItem = BookLists.search(queryType: type, query: String(id)).last else { return }
+        try! BookLists.realm.write() {
+            BookLists.realm.delete(item)
         }
     }
 

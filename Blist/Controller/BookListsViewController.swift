@@ -80,6 +80,23 @@ extension BookListsViewController: UITableViewDelegate {
         }
     }
     
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = UIContextualAction(style: .destructive, title: "削除") { (action, sourceView, completionHandler) in completionHandler(true)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+            BookLists.deleteBookList(item: self.model.bookLists[indexPath.row])
+            self.listsView.tableView.reloadData()
+        }
+        
+//        let share = UIContextualAction(style: .normal, title: "保存") { (action, sourceView, completionHandler) in completionHandler(true)
+//            print("保存")
+//        }
+        let swipeAction = UISwipeActionsConfiguration(actions: [delete])
+        swipeAction.performsFirstActionWithFullSwipe = false
+        return swipeAction
+    }
+    
 //    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
 //        toggleBarcodeButton(shouldPresent: false)
 //    }
