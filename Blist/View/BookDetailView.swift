@@ -77,11 +77,19 @@ class BookDetailView: UIView {
         return button
     }()
     
+    lazy var buyYahooBtn: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.backgroundColor = UIColor.hex(hexStr: "F19E39", alpha: 1.0)
+        button.setTitle("Yahooショッピングで購入", for: .normal)
+        return button
+    }()
+    
     lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView(frame: .zero)
         stackView.distribution = .fillEqually
         stackView.addArrangedSubview(buyRakutenButton)
         stackView.addArrangedSubview(buyAmazonButton)
+        stackView.addArrangedSubview(buyYahooBtn)
         return stackView
     }()
     

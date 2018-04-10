@@ -31,6 +31,7 @@ class BookDetailViewController: UIViewController {
         detailView.descTextView.text = model.book.explanation
         detailView.buyRakutenButton.addTarget(self, action: #selector(openRakutenApp), for: .touchUpInside)
         detailView.buyAmazonButton.addTarget(self, action: #selector(openAmazonApp), for: .touchUpInside)
+        detailView.buyYahooBtn.addTarget(self, action: #selector(openYahooShop), for: .touchUpInside)
         
         guard let url = URL(string: model.book.imageLink) else { return }
         Alamofire.request(url)
@@ -75,6 +76,14 @@ class BookDetailViewController: UIViewController {
     @objc private func openRakutenApp() {
         let url = URL(string: model.book.itemUrl)!
     //                let appScheme = URL(string: "Rakuten://")!
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @objc private func openYahooShop() {
+        let url = URL(string: "https://shopping.yahoo.co.jp/search?first=&p=\(self.model.book.ISBN)")!
+        //                let appScheme = URL(string: "Rakuten://")!
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
         }
