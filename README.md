@@ -1,5 +1,5 @@
 # What is Blists
-Blist is a book list creation application that can transition to purchase links of multiple sites  
+Blist is an application that can create a book list corresponding to purchase links to multiple sites  
 Amazon, Yahoo Shopping, Rakuten is available for now
 
 # DownLoad Link
