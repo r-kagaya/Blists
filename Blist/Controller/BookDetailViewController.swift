@@ -66,7 +66,7 @@ class BookDetailViewController: UIViewController {
     }
     
     @objc private func presentBuyActionSheet() {
-        Alert(title: "購入先を選んで下さい", message: "購入先を選んで下さい", style: .actionSheet)
+        Alert(title: "購入先を選んで下さい", message: "購入先を選んで、購入を完了させましょう", style: .actionSheet)
         .addAction(title: "Yahooショッピング", style: .default) { _ in
             self.openYahooShop()
         }
@@ -76,6 +76,7 @@ class BookDetailViewController: UIViewController {
         .addAction(title: "楽天", style: .default) { _ in
             self.openRakutenApp()
         }
+        .addAction(title: "キャンセル", style: .cancel)
         .open()
     }
     
