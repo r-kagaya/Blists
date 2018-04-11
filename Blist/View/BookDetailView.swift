@@ -63,34 +63,41 @@ class BookDetailView: UIView {
         return imageView
     }()
 
-    lazy var buyRakutenButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.backgroundColor = UIColor.hex(hexStr: "DC2C17", alpha: 1.0)
-        button.setTitle("楽天で購入", for: .normal)
-        return button
-    }()
+//    lazy var buyRakutenButton: UIButton = {
+//        let button = UIButton(frame: .zero)
+//        button.backgroundColor = UIColor.hex(hexStr: "DC2C17", alpha: 1.0)
+//        button.setTitle("楽天", for: .normal)
+//        return button
+//    }()
+//
+//    lazy var buyAmazonButton: UIButton = {
+//        let button = UIButton(frame: .zero)
+//        button.backgroundColor = UIColor.hex(hexStr: "F19E39", alpha: 1.0)
+//        button.setTitle("Amazon", for: .normal)
+//        return button
+//    }()
+//
+//    lazy var buyYahooBtn: UIButton = {
+//        let button = UIButton(frame: .zero)
+//        button.backgroundColor = UIColor.hex(hexStr: "EA253D", alpha: 1.0)
+//        button.setTitle("Yahooショッピング", for: .normal)
+//        return button
+//    }()
     
-    lazy var buyAmazonButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.backgroundColor = UIColor.hex(hexStr: "F19E39", alpha: 1.0)
-        button.setTitle("Amazonで購入", for: .normal)
-        return button
-    }()
+//    lazy var buttonStackView: UIStackView = {
+//        let stackView = UIStackView(frame: .zero)
+//        stackView.distribution = .fillEqually
+//        stackView.addArrangedSubview(buyRakutenButton)
+//        stackView.addArrangedSubview(buyAmazonButton)
+//        stackView.addArrangedSubview(buyYahooBtn)
+//        return stackView
+//    }()
     
-    lazy var buyYahooBtn: UIButton = {
+    lazy var buyButton: UIButton = {
         let button = UIButton(frame: .zero)
-        button.backgroundColor = UIColor.hex(hexStr: "F19E39", alpha: 1.0)
-        button.setTitle("Yahooショッピングで購入", for: .normal)
+        button.backgroundColor = UIColor.hex(hexStr: "52ACFF", alpha: 1.0)
+        button.setTitle("購入する", for: .normal)
         return button
-    }()
-    
-    lazy var buttonStackView: UIStackView = {
-        let stackView = UIStackView(frame: .zero)
-        stackView.distribution = .fillEqually
-        stackView.addArrangedSubview(buyRakutenButton)
-        stackView.addArrangedSubview(buyAmazonButton)
-        stackView.addArrangedSubview(buyYahooBtn)
-        return stackView
     }()
     
     required init() {
@@ -103,7 +110,7 @@ class BookDetailView: UIView {
         addSubview(subtitleLabel)
         addSubview(descTextViewLabel)
         addSubview(descTextView)
-        addSubview(buttonStackView)
+        addSubview(buyButton)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -115,15 +122,19 @@ class BookDetailView: UIView {
     }
     
     private func setupButtonDesgin() {
-        buyRakutenButton.addShadow(.lightGray, opacity: 1.0, radius: 2.0, CGSize(width: 2, height: 2))
-        buyRakutenButton.layer.cornerRadius = 20.0
-        buyRakutenButton.addBorder()
-        //        buyRakutenButton.layer.masksToBounds = false //角丸ではみ出した背景を切り取る
+//        buyRakutenButton.addShadow(.lightGray, opacity: 1.0, radius: 2.0, CGSize(width: 2, height: 2))
+//        buyRakutenButton.layer.cornerRadius = 20.0
+//        buyRakutenButton.addBorder()
+//        //        buyRakutenButton.layer.masksToBounds = false //角丸ではみ出した背景を切り取る
+//
+//        buyAmazonButton.addShadow(.lightGray, opacity: 1.0, radius: 2.0, CGSize(width: 3, height: 3))
+//        buyAmazonButton.addBorder()
+//        buyAmazonButton.layer.cornerRadius = 20.0
+//        //        buyAmazonButton.layer.masksToBounds = false //角丸ではみ出した背景を切り取る
         
-        buyAmazonButton.addShadow(.lightGray, opacity: 1.0, radius: 2.0, CGSize(width: 3, height: 3))
-        buyAmazonButton.addBorder()
-        buyAmazonButton.layer.cornerRadius = 20.0
-        //        buyAmazonButton.layer.masksToBounds = false //角丸ではみ出した背景を切り取る
+        buyButton.addShadow(.lightGray, opacity: 1.0, radius: 2.0, CGSize(width: 3, height: 3))
+        buyButton.addBorder()
+        buyButton.layer.cornerRadius = 20.0
     }
     
     private func activateConstraints() {
@@ -167,15 +178,14 @@ class BookDetailView: UIView {
         descTextView.translatesAutoresizingMaskIntoConstraints = false
         descTextView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         descTextView.topAnchor.constraint(equalTo: descTextViewLabel.bottomAnchor, constant: 0).isActive = true
-        descTextView.bottomAnchor.constraint(equalTo: buttonStackView.topAnchor, constant: -30).isActive = true
+        descTextView.bottomAnchor.constraint(equalTo: buyButton.topAnchor, constant: -30).isActive = true
         descTextView.widthAnchor.constraint(equalToConstant: frame.width - 40).isActive = true
         
-        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-        buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30).isActive = true
-        buttonStackView.widthAnchor.constraint(equalToConstant: frame.width - 50).isActive = true
-        buttonStackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        buttonStackView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        buttonStackView.spacing = 15
+        buyButton.translatesAutoresizingMaskIntoConstraints = false
+        buyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30).isActive = true
+        buyButton.widthAnchor.constraint(equalToConstant: frame.width - 100).isActive = true
+        buyButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        buyButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
 
     }
   

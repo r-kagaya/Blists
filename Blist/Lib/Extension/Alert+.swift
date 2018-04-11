@@ -37,8 +37,8 @@ class Alert {
 
     private var alertController: UIAlertController
     
-    required init(title: String, message: String) {
-        alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    required init(title: String, message: String, style: UIAlertControllerStyle = .alert) {
+        alertController = UIAlertController(title: title, message: message, preferredStyle: style)
     }
     
     func addAction(title: String, style: UIAlertActionStyle, handler: ( (UIAlertAction) -> Void)? = nil) -> Alert {
@@ -49,7 +49,6 @@ class Alert {
     func open(handler: ( () -> Void)? = nil) {
         ControllerUtil.getTopMostViewController().present(alertController, animated: true, completion: handler)
     }
-    
     
     
 }

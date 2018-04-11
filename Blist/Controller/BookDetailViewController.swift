@@ -29,10 +29,10 @@ class BookDetailViewController: UIViewController {
         detailView.titleLabel.text = model.book.title
         detailView.subtitleLabel.text = model.book.subTitle
         detailView.descTextView.text = model.book.explanation
-        detailView.buyRakutenButton.addTarget(self, action: #selector(openRakutenApp), for: .touchUpInside)
-        detailView.buyAmazonButton.addTarget(self, action: #selector(openAmazonApp), for: .touchUpInside)
-        detailView.buyYahooBtn.addTarget(self, action: #selector(openYahooShop), for: .touchUpInside)
-        
+//        detailView.buyRakutenButton.addTarget(self, action: #selector(openRakutenApp), for: .touchUpInside)
+//        detailView.buyAmazonButton.addTarget(self, action: #selector(openAmazonApp), for: .touchUpInside)
+//        detailView.buyYahooBtn.addTarget(self, action: #selector(openYahooShop), for: .touchUpInside)
+        detailView.buyButton.addTarget(self, action: #selector(presentBuyActionSheet), for: .touchUpInside)
         guard let url = URL(string: model.book.imageLink) else { return }
         Alamofire.request(url)
             .responseData { response in
@@ -65,7 +65,21 @@ class BookDetailViewController: UIViewController {
         return String(_isbn10) + String(_isbn13checkDegit)
     }
     
-    @objc private func openAmazonApp() {
+    @objc private func presentBuyActionSheet() {
+        Alert(title: "購入先を選んで下さい", message: "購入先を選んで下さい", style: .actionSheet)
+        .addAction(title: "Yahooショッピング", style: .default) { _ in
+            self.openYahooShop()
+        }
+        .addAction(title: "Amazon", style: .default) { _ in
+            self.openAmazonApp()
+        }
+        .addAction(title: "楽天", style: .default) { _ in
+            self.openRakutenApp()
+        }
+        .open()
+    }
+    
+    private func openAmazonApp() {
         let url = URL(string: "http://www.amazon.co.jp/dp/\(self.convertToISBN10(ISBN13: self.model.book.ISBN))")!
     //                let appScheme = URL(string: "com.amazon.mobile.shopping://")!
         if UIApplication.shared.canOpenURL(url) {
@@ -73,7 +87,7 @@ class BookDetailViewController: UIViewController {
         }
     }
     
-    @objc private func openRakutenApp() {
+    private func openRakutenApp() {
         let url = URL(string: model.book.itemUrl)!
     //                let appScheme = URL(string: "Rakuten://")!
         if UIApplication.shared.canOpenURL(url) {
@@ -81,7 +95,7 @@ class BookDetailViewController: UIViewController {
         }
     }
     
-    @objc private func openYahooShop() {
+    private func openYahooShop() {
         let url = URL(string: "https://shopping.yahoo.co.jp/search?first=&p=\(self.model.book.ISBN)")!
         //                let appScheme = URL(string: "Rakuten://")!
         if UIApplication.shared.canOpenURL(url) {
