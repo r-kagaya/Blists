@@ -29,10 +29,25 @@ class BookDetailViewController: UIViewController {
         detailView.titleLabel.text = model.book.title
         detailView.subtitleLabel.text = model.book.subTitle
         detailView.descTextView.text = model.book.explanation
-//        detailView.buyRakutenButton.addTarget(self, action: #selector(openRakutenApp), for: .touchUpInside)
-//        detailView.buyAmazonButton.addTarget(self, action: #selector(openAmazonApp), for: .touchUpInside)
-//        detailView.buyYahooBtn.addTarget(self, action: #selector(openYahooShop), for: .touchUpInside)
         detailView.buyButton.addTarget(self, action: #selector(presentBuyActionSheet), for: .touchUpInside)
+        
+        let ratingLabel = UILabel(frame: .zero)
+        ratingLabel.text = model.book.reviewAverage
+        ratingLabel.textAlignment = .center
+        
+        let priceLabel = UILabel(frame: .zero)
+        priceLabel.text = String(model.book.itemPrice) + "円"
+        priceLabel.textAlignment = .center
+        
+        let authorLabel = UILabel(frame: .zero)
+        authorLabel.text = model.book.authors
+        authorLabel.adjustsFontSizeToFitWidth = true
+        authorLabel.textAlignment = .center
+        
+        detailView.infoStackView.addArrangedSubview(ratingLabel)
+        detailView.infoStackView.addArrangedSubview(priceLabel)
+        detailView.infoStackView.addArrangedSubview(authorLabel)
+
         guard let url = URL(string: model.book.imageLink) else { return }
         Alamofire.request(url)
             .responseData { response in

@@ -3,14 +3,7 @@ import Foundation
 import UIKit
 
 class BookDetailView: UIView {
-    
-//    @IBOutlet weak var subtitleLabel: UILabel!
-//    @IBOutlet weak var publishedDate: UILabel!
-//    @IBOutlet weak var authorLabel: UILabel!
-//    @IBOutlet weak var pageCountLabel: UILabel!
-//    @IBOutlet weak var descTextView: UITextView!
-//    @IBOutlet weak var bookImageView: UIImageView!
-    
+
     lazy var titlePlaceHolder: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "Title"
@@ -62,37 +55,31 @@ class BookDetailView: UIView {
         let imageView = UIImageView(frame: .zero)
         return imageView
     }()
+    
+    lazy var infoStackView: UIStackView = {
+        let view = UIStackView(frame: .zero)
+        view.distribution = .fillEqually
+        view.spacing = 20
+        return view
+    }()
+    
+    lazy var infoLabel: UIStackView = {
+        let view = UIStackView(frame: .zero)
+        view.distribution = .fillEqually
+        view.spacing = 20
 
-//    lazy var buyRakutenButton: UIButton = {
-//        let button = UIButton(frame: .zero)
-//        button.backgroundColor = UIColor.hex(hexStr: "DC2C17", alpha: 1.0)
-//        button.setTitle("楽天", for: .normal)
-//        return button
-//    }()
-//
-//    lazy var buyAmazonButton: UIButton = {
-//        let button = UIButton(frame: .zero)
-//        button.backgroundColor = UIColor.hex(hexStr: "F19E39", alpha: 1.0)
-//        button.setTitle("Amazon", for: .normal)
-//        return button
-//    }()
-//
-//    lazy var buyYahooBtn: UIButton = {
-//        let button = UIButton(frame: .zero)
-//        button.backgroundColor = UIColor.hex(hexStr: "EA253D", alpha: 1.0)
-//        button.setTitle("Yahooショッピング", for: .normal)
-//        return button
-//    }()
-    
-//    lazy var buttonStackView: UIStackView = {
-//        let stackView = UIStackView(frame: .zero)
-//        stackView.distribution = .fillEqually
-//        stackView.addArrangedSubview(buyRakutenButton)
-//        stackView.addArrangedSubview(buyAmazonButton)
-//        stackView.addArrangedSubview(buyYahooBtn)
-//        return stackView
-//    }()
-    
+        let infoItems = ["レビュー", "プライス", "著者"]
+        infoItems.forEach { item in
+            let label = UILabel(frame: .zero)
+            label.text = item
+            label.textAlignment = .center
+            label.textColor = .lightGray
+            view.addArrangedSubview(label)
+        }
+
+        return view
+    }()
+
     lazy var buyButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.backgroundColor = UIColor.hex(hexStr: "52ACFF", alpha: 1.0)
@@ -110,6 +97,8 @@ class BookDetailView: UIView {
         addSubview(subtitleLabel)
         addSubview(descTextViewLabel)
         addSubview(descTextView)
+        addSubview(infoLabel)
+        addSubview(infoStackView)
         addSubview(buyButton)
     }
     required init?(coder aDecoder: NSCoder) {
@@ -122,16 +111,6 @@ class BookDetailView: UIView {
     }
     
     private func setupButtonDesgin() {
-//        buyRakutenButton.addShadow(.lightGray, opacity: 1.0, radius: 2.0, CGSize(width: 2, height: 2))
-//        buyRakutenButton.layer.cornerRadius = 20.0
-//        buyRakutenButton.addBorder()
-//        //        buyRakutenButton.layer.masksToBounds = false //角丸ではみ出した背景を切り取る
-//
-//        buyAmazonButton.addShadow(.lightGray, opacity: 1.0, radius: 2.0, CGSize(width: 3, height: 3))
-//        buyAmazonButton.addBorder()
-//        buyAmazonButton.layer.cornerRadius = 20.0
-//        //        buyAmazonButton.layer.masksToBounds = false //角丸ではみ出した背景を切り取る
-        
         buyButton.addShadow(.lightGray, opacity: 1.0, radius: 2.0, CGSize(width: 3, height: 3))
         buyButton.addBorder()
         buyButton.layer.cornerRadius = 20.0
@@ -168,10 +147,28 @@ class BookDetailView: UIView {
         subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0).isActive = true
         subtitleLabel.sizeToFit()
         subtitleLabel.widthAnchor.constraint(equalToConstant: frame.width - 40).isActive = true
+        
+        infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        infoLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        infoLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 20).isActive = true
+        infoLabel.widthAnchor.constraint(equalToConstant: frame.width - 20).isActive = true
+        infoLabel.sizeToFit()
+        
+        infoStackView.translatesAutoresizingMaskIntoConstraints = false
+        infoStackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        infoStackView.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 10).isActive = true
+        infoStackView.widthAnchor.constraint(equalToConstant: frame.width - 20).isActive = true
+        infoStackView.heightAnchor.constraint(equalToConstant: 20).isActive = true
 
+        buyButton.translatesAutoresizingMaskIntoConstraints = false
+        buyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30).isActive = true
+        buyButton.widthAnchor.constraint(equalToConstant: frame.width - 100).isActive = true
+        buyButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        buyButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
         descTextViewLabel.translatesAutoresizingMaskIntoConstraints = false
         descTextViewLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        descTextViewLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 20).isActive = true
+        descTextViewLabel.topAnchor.constraint(equalTo: infoStackView.bottomAnchor, constant: 20).isActive = true
         descTextViewLabel.widthAnchor.constraint(equalToConstant: frame.width - 50).isActive = true
         descTextViewLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
 
@@ -180,12 +177,6 @@ class BookDetailView: UIView {
         descTextView.topAnchor.constraint(equalTo: descTextViewLabel.bottomAnchor, constant: 0).isActive = true
         descTextView.bottomAnchor.constraint(equalTo: buyButton.topAnchor, constant: -30).isActive = true
         descTextView.widthAnchor.constraint(equalToConstant: frame.width - 40).isActive = true
-        
-        buyButton.translatesAutoresizingMaskIntoConstraints = false
-        buyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30).isActive = true
-        buyButton.widthAnchor.constraint(equalToConstant: frame.width - 100).isActive = true
-        buyButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        buyButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
 
     }
   
