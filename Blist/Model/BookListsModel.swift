@@ -2,7 +2,6 @@
 import Foundation
 import UIKit
 
-
 class BookListsModel: NSObject, UITableViewDataSource {
     
     lazy var bookLists = {
