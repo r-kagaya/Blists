@@ -6,3 +6,5 @@ Amazon, Yahoo Shopping, Rakuten is available for now
 
 
 # DownLoad Link
+
+https://itunes.apple.com/tr/app/blist/id1369624777?mt=8
