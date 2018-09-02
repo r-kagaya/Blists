@@ -9,6 +9,7 @@ target 'Blist' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'RealmSwift'
+  pod 'NVActivityIndicatorView'
 
   target 'BlistTests' do
     inherit! :search_paths

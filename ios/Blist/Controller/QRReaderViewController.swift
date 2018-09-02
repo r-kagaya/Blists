@@ -2,10 +2,13 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import NVActivityIndicatorView
 
 class QRReaderViewController: UIViewController {
 
-    private var qrReaderView: QRReaderView!
+    private var qrReaderView: QRReaderView
+    private var indicator: NVActivityIndicatorView
+    
     override func loadView() {
         self.view = QRReaderView()
     }
@@ -16,6 +19,8 @@ class QRReaderViewController: UIViewController {
         qrReaderView = self.view as! QRReaderView
         qrReaderView.listButton.addTarget(self, action: #selector(showList), for: .touchUpInside)
         qrReaderView.delegate = self
+        
+        indicator = NVActivityIndicatorView(frame: view.frame, type: "BallPulse", color: .black, padding: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +59,8 @@ class QRReaderViewController: UIViewController {
 
 extension QRReaderViewController: barcodeReaderDelegate {
     func didDetection(isbn: String) {
+        indicator.startAnimating()
+        
 //        guard let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=isbn:\(isbn)") else { return }
         guard let url = URL(string: "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&isbn=\(isbn)&applicationId=1016045182743403697") else { return }
 
