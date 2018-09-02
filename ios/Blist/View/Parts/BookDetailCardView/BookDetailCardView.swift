@@ -16,15 +16,17 @@ class BookDetailCardView: UIView {
         super.init(frame: frame)
         self.loadFromNib()
     }
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.loadFromNib()
     }
+    
+    override func willMove(toWindow newWindow: UIWindow?) {
+        descTextView.setContentOffset(.zero, animated: false)
+    }
 
     /** Nibファイル読み込み */
     private func loadFromNib() {
-        
         let view = Bundle.main.loadNibNamed("BookDetailCardView", owner: self, options: nil)?.first as! UIView
         view.frame = self.bounds
 
@@ -48,6 +50,5 @@ class BookDetailCardView: UIView {
         )
         self.addConstraints(constraints2)
     }
-    
     
 }
