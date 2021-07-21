@@ -62,7 +62,7 @@ extension QRReaderViewController: barcodeReaderDelegate {
         indicator.startAnimating()
         
 //        guard let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=isbn:\(isbn)") else { return }
-        guard let url = URL(string: "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&isbn=\(isbn)&applicationId=1016045182743403697") else { return }
+        guard let url = URL(string: "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&isbn=\(isbn)&applicationId=\(applicationId)") else { return }
 
         Alamofire.request(url)
             .responseJSON { response in
